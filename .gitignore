@@ -1,6 +1,10 @@
 # Keys
 *.pem
 
+# Folders
+/transfer_files
+/measurements
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

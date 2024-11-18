@@ -1,0 +1,13 @@
+scp -i key.pem ec2-user@ec2-54-202-140-59.us-west-2.compute.amazonaws.com:transferred/no-latency.txt no-latency.txt
+
+# Add delay
+sudo tc qdisc add dev enX0 root netem delay 20ms
+
+# Add packet loss
+sudo tc qdisc add dev enX0 root netem loss 0.01%
+
+# Show existing restrictions on enX0 (replace with needed interface)
+tc qdisc show dev enX0 
+
+# Remove all existing retrictions no that interface
+sudo tc qdisc del dev enX0 root
