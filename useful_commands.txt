@@ -18,8 +18,14 @@ tc qdisc show dev enX0
 sudo tc qdisc del dev enX0 root
 
 # Changing rmem and wmem
-sudo sysctl -w net.core.wmem_default=2621440
-sudo sysctl -w net.core.wmem_max=5242880
+sudo sysctl -w net.core.wmem_default=1073741824
+sudo sysctl -w net.core.wmem_max=1073741824
 
-sudo sysctl -w net.core.rmem_default=2621440
-sudo sysctl -w net.core.rmem_max=5242880
+sudo sysctl -w net.core.rmem_default=1073741824
+sudo sysctl -w net.core.rmem_max=1073741824
+
+# Switching to BBR
+sudo sysctl -w net.ipv4.tcp_congestion_control=bbr
+
+# Checking whichvariant of congestion control
+sysctl net.ipv4.tcp_congestion_control
